@@ -23,17 +23,18 @@ class AuctionStore {
 
       this.auctions = result.data;
     } catch (error) {
-      alert('Could not fetch auctions! Check console for more details.');
+      alert('Error fetching auction. Please contact the administrator.');
       console.error(error);
     }
 
+    /*
     if (this.biddingOn) {
       this.auctions.forEach(auction => {
         if (auction.id === this.biddingOn.id) {
           this.bidAmount = auction.highestBid.amount + 1;
         }
       });
-    }
+    }*/
   }
 
   @action
@@ -56,6 +57,7 @@ class AuctionStore {
   async placeBid() {
     const id = this.biddingOn.id;
     const amount = this.bidAmount;
+    console.log(amount);
 
     OverlayStore.setLoadingSpinner(true);
 
@@ -66,7 +68,7 @@ class AuctionStore {
         }
       });
     } catch (error) {
-      alert('Could not place bid! Check console for more details.');
+      alert('Could not place bid! Please try again. Ensure your bid is higher then the currrent bid');
       console.error(error);
     }
 
@@ -96,7 +98,7 @@ class AuctionStore {
         },
       });
     } catch (error) {
-      alert('Could not create auction! Check console for more details.');
+      alert('Could not create auction! Please try again.');
       console.error(error);
     }
 
