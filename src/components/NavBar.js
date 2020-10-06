@@ -37,7 +37,7 @@ const NavBar = ({ authStore }) => {
   return (
     <div className={classes.navbar}>
       <div className={classes.header}>
-        <h1 style={{ fontSize: 14, color: 'white' }}>THE AUCTION HOUSE</h1>
+        <h1 style={{ fontSize: 18, color: 'white' }}>AuctionHub</h1>
       </div>
       <div className={classes.loginLogoutContainer}>
         {!isAuthenticated && (
@@ -54,9 +54,21 @@ const NavBar = ({ authStore }) => {
             className={classes.button}
             onClick={() => logout({})}
           >
+            Profile
+          </Button>
+          
+        )}
+        
+        {isAuthenticated && (
+          <Button
+            className={classes.button}
+            onClick={() => logout({})}
+          >
             Sign out
           </Button>
+          
         )}
+
       </div>
     </div>
   );
